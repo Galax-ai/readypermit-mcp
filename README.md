@@ -4,6 +4,16 @@
 
 This MCP server connects AI assistants (Claude, ChatGPT, Cursor, VS Code, Windsurf) to [ReadyPermit](https://readypermit.ai) — instant property intelligence powered by 20+ government data sources.
 
+## Pricing
+
+Pay-as-you-go: **$5 per successful analysis** (prepaid credits).
+
+Get an API key at https://buildability.us/api
+
+Free Buildability Score remains available at https://buildability.us
+
+No open free tier on the MCP endpoint. A valid API key is required for production volume.
+
 ## Tools
 
 | Tool | Description |
