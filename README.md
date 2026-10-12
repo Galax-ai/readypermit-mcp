@@ -1,8 +1,8 @@
-# ReadyPermit MCP Server
+# Buildability™ MCP Server (`readypermit-mcp`)
 
 > AI-powered property zoning, buildability, and ADU eligibility analysis for any U.S. address.
 
-This MCP server connects AI assistants (Claude, ChatGPT, Cursor, VS Code, Windsurf) to [ReadyPermit](https://readypermit.ai) — instant property intelligence powered by 20+ government data sources.
+This MCP server connects AI assistants (Claude, ChatGPT, Cursor, VS Code, Windsurf) to [Buildability™](https://buildability.us) — instant property intelligence powered by 20+ government data sources.
 
 ## Pricing
 
@@ -10,7 +10,7 @@ Pay-as-you-go: **$5 per successful analysis** (prepaid credits).
 
 Get an API key at https://buildability.us/api
 
-Free Buildability Score remains available at https://buildability.us
+The Buildability™ Score is still available at no cost on https://buildability.us
 
 No open free tier on the MCP endpoint. A valid API key is required for production volume.
 
@@ -37,6 +37,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
       "command": "npx",
       "args": ["-y", "readypermit-mcp"],
       "env": {
+        "READYPERMIT_API_KEY": "your-buildability-api-key",
         "MAPBOX_TOKEN": "your-mapbox-token"
       }
     }
@@ -46,9 +47,22 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 
 ### Cursor
 
-Settings > Features > MCP > Add Server:
-- Name: `readypermit`
-- Command: `npx -y readypermit-mcp`
+Add to `~/.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "readypermit": {
+      "command": "npx",
+      "args": ["-y", "readypermit-mcp"],
+      "env": {
+        "READYPERMIT_API_KEY": "your-buildability-api-key",
+        "MAPBOX_TOKEN": "your-mapbox-token"
+      }
+    }
+  }
+}
+```
 
 ### ChatGPT Desktop
 
@@ -58,8 +72,8 @@ Settings > MCP Servers > Add Server > enter `npx -y readypermit-mcp`
 
 | Variable | Required | Description |
 |----------|----------|-------------|
+| `READYPERMIT_API_KEY` | Required for production | API key for full analysis volume. Get one at https://buildability.us/api |
 | `MAPBOX_TOKEN` | Recommended | Mapbox API token for geocoding |
-| `READYPERMIT_API_KEY` | Optional | ReadyPermit API key for full report data (coming soon) |
 
 ## What It Does
 
@@ -67,8 +81,7 @@ When an AI assistant user asks about property zoning, ADUs, flood risk, or build
 
 1. Geocode the address via Mapbox
 2. Return a structured property preview with key data points
-3. Generate a deep link to the full ReadyPermit Buildability Report
-4. The user gets their first report free — no signup required
+3. Generate a deep link to the full Buildability™ Report
 
 ## Example Prompts
 
@@ -78,11 +91,11 @@ When an AI assistant user asks about property zoning, ADUs, flood risk, or build
 - "Compare these 3 investment properties for buildability"
 - "What can I build on my lot at 789 Pine St, Denver, CO?"
 
-## About ReadyPermit
+## About Buildability™
 
-ReadyPermit replaces $2,000-$4,500 in zoning consultant fees with an instant Buildability Report:
+Buildability™ replaces $2,000-$4,500 in zoning consultant fees with an instant Buildability™ Report:
 
-- Buildability Score (0-100, letter-graded)
+- Buildability™ Score (0-100, letter-graded)
 - Zoning analysis (FAR, setbacks, height limits, permitted uses)
 - ADU eligibility and permit pathway
 - Environmental risk (FEMA, EPA, wildfire, seismic)
@@ -90,12 +103,14 @@ ReadyPermit replaces $2,000-$4,500 in zoning consultant fees with an instant Bui
 
 Covers all 50 U.S. states, 3,100+ counties. Data from 20+ government sources.
 
+Buildability™ is a product of ReadyPermit.AI, Inc.
+
 ## License
 
 MIT
 
 ## Links
 
-- [ReadyPermit](https://readypermit.ai)
-- [Report an Issue](https://github.com/lbreid07-dotcom/readypermit-mcp/issues)
+- [Buildability™](https://buildability.us)
+- [Report an Issue](https://github.com/Galax-ai/readypermit-mcp/issues)
 - Built by [Galax Studios](https://galaxstudios.com)
